@@ -6,4 +6,12 @@ class WelcomeController < ApplicationController
       render json: {status: 'error', code: 422, message: 'No name param given'}
     end
   end
+
+  def reverse
+    if params[:string]
+      render json: { reversed_string: params[:string].chars.reverse.join('') }
+    else
+      render json: { status: 'error', code: 422, message: 'No string param given' }
+    end
+  end
 end
